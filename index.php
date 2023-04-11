@@ -120,12 +120,8 @@ session_start();
             // btn update
             $("temps").click(function() {
                 var iduser = $(this).attr("value");
-                $("#right_inner").load("./element_vmk/mUser/userUpdate.php?iduser=" + iduser);
-            })
-            $("temps").click(function(){
-                var iduser =$(this).attr("value");
-                $("#right_inner").load("./elements_LMK/mUser/userupdate.php?iduser="+iduser);
-            });    
+                $("#right_inner").load("./elements_LMK/mUser/userupdate.php?iduser=" + iduser);
+            })    
         });    
     </script>
 </head>
@@ -137,9 +133,11 @@ session_start();
     }
     ?>
     <div id="top_div"></div>
+
     <div id="left_div">
         <?php require './elements_LMK/left.php'; ?>
     </div>
+
     <div id="center_div">
         <?php //require './pageJS./exjs.php';
         ?>
@@ -150,15 +148,19 @@ session_start();
         <?php //require './pageJS/exjs03.php';
         ?>
         <?php require './elements_LMK/center.php'; ?>
-        <div id="right_div">
-            <?php require './elements_LMK/mod/right.php';?>
-        </div>
-        <div id="bottom_div"></div>
-        <div id="signuotbutton">
-            <a href="elements_LMK/mUser/userAct.php?reqact=userlogout">
-                <img src="img_LMK/dangxuat.png" class="iconbuttom"/>
-            </a>
-        </div>
+    </div>
+
+    <div id="right_div">
+        <?php require './elements_LMK/right.php';?>
+    </div>
+
+    <div id="bottom_div"></div>
+
+    <div id="signoutbutton">
+        <a href="elements_LMK/mUser/userAct.php?reqact=userlogout">
+            <img src="img_LMK/dangxuat.png" class="iconbutton"/>
+        </a>
+    </div>
 </body>
 
 </html>

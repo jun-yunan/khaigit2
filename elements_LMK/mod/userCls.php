@@ -17,7 +17,7 @@ class userCls extends database {
     }
 
     public function UserCheckLogin($username, $password) {
-        $select = $this->connect->prepare("select * from user " . "where username = ? and password = ? and abtility=1");
+        $select = $this->connect->prepare("select * from user " . "where username = ? and password = ? and abiliti=1");
         $select->setFetchMode(PDO::FETCH_OBJ);
         $select->execute(array($username, $password));
 
@@ -78,9 +78,9 @@ class userCls extends database {
         return $update->rowCount();
     }
 
-    public function UserSetActive($iduser, $abtility) {
-        $update = $this->connect->prepare("update user set abtility=? where iduser=?");
-        $update->execute(array($abtility, $iduser));
+    public function UserSetActive($iduser, $abiliti) {
+        $update = $this->connect->prepare("update user set abiliti=? where iduser=?");
+        $update->execute(array($abiliti, $iduser));
 
         return $update->rowCount();
     }

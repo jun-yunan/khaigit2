@@ -55,7 +55,7 @@ require './elements_LMK/mod/userCls.php';
     $list_User = $obj_User->UserGetAll();
     $i = count($list_User);
     ?>
-    <p>Trong bảng có <b><?php echo $i?></b></p>
+    <p>Trong bảng có <b><?php echo $i ?></b></p>
     <?php
     if ($i > 0) {
     ?>
@@ -84,13 +84,55 @@ require './elements_LMK/mod/userCls.php';
                         <td><?php echo $v->username; ?></td>
                         <td><?php echo $v->password; ?></td>
                         <td><?php echo $v->hoten; ?></td>
-                        <td><?php echo $v->gioitinh; ?></td>
+                        <!-- <td><?php //echo $v->gioitinh; 
+                                    ?></td> -->
+                        <td align="center">
+                            <?php
+                            if ($v->gioitinh == 0) {
+                            ?>
+                                <img class="iconimg" src="./img_LMK/girlicon.png" />
+                            <?php
+                            } else {
+                            ?>
+                                <img class="iconimg" src="./img_LMK/anhboy.png" />
+                            <?php
+                            }
+                            ?>
+                        </td>
                         <td><?php echo $v->ngaysinh; ?></td>
                         <td><?php echo $v->diachi; ?></td>
                         <td><?php echo $v->dienthoai; ?></td>
                         <td><?php echo $v->ngaydangki; ?></td>
-                        <td><?php echo $v->abiliti; ?></td>
-                        <td>Xoá</td>
+                        <!-- <td><?php //echo $v->abiliti; 
+                                    ?></td> -->
+                        <td align="center">
+                            <?php
+                            if ($v->abiliti == 0) {
+                            ?>
+                                <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php echo $v->iduser; ?> &ability=<?php echo $v->abiliti; ?>">
+                                    <img class="iconimg" src="./img_LMK/okhoadong.png" />
+                                </a>
+                            <?php
+                            } else {
+                            ?>
+                                <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php echo $v->iduser; ?> &ability=<?php echo $v->abiliti; ?>">
+                                    <img class="iconimg" src="./img_LMK/okhoamo.png" />
+                                </a>
+                            <?php
+                            }
+
+                            ?>
+                        </td>
+                        <!-- <td>Xoá</td> -->
+                        <td>
+                            <a href="./elements_LMK/mUser/userAct.php?reqact=deleteuser&iduser=<?php echo $v->iduser; ?>">
+                                <img class="iconimg" src="./img_LMK/anhxoa.png" alt="">
+                            </a>
+
+                            <temps class="btnupdate" value="<?php echo $v->iduser; ?>">
+                                <img class="iconimg" src="./img_LMK/khoiphuc.png" alt="">
+                            </temps>
+                        </td>
                     </tr>
                 <?php
                 }
@@ -102,51 +144,116 @@ require './elements_LMK/mod/userCls.php';
     ?>
 </div>
 
-<td><?php echo $v->hoten;  ?></td>
-<td align="center">
-    <?php
-    if ($v->gioitinh == 0){
-        ?>
-        <img class="iconimg" src="./img_LMK/girlicon.png"/>
-        <?php
-    } else {
-        ?>
-        <img class="iconimg" src="./img_LMK/anhboy.png"/>
-        <?php
-    }
-    ?>
-</td>
-<td><?php echo $v->ngaysinh; ?></td>
+<!-- <td><?php //echo $v->hoten;  ?></td> -->
 
-<td ><?php echo $v->ngaydangki; ?></td>
-<td align="center">
+<!-- gioi tinh -->
+<!-- <td align="center">
     <?php
-    if ($v->abtility ==0){
-        ?>
-        <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php echo $v->iduser;?>
-        &ability=<?php echo $v->ability; ?>">
-        <img class="iconimg" src="./img_LMK/okhoadong.png"/>
-    </a>
-        <?php
-    } else {
-        ?>
-        <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php echo$v->iduser; ?>
-        &ability=<?php echo $v->ability; ?>">
-        <img class="iconimg" src="./img_LMK/okhoamo.png"/>
-    </a>
-        <?php
-    }
+    //if ($v->gioitinh == 0) {
     ?>
-</td>
+        <img class="iconimg" src="./img_LMK/girlicon.png" />
+    <?php
+    //} else {
+    ?>
+        <img class="iconimg" src="./img_LMK/anhboy.png" />
+    <?php
+    //}
+    ?>
+</td> -->
 
-<td>
-    <a href="./elements_LMK/mUser/userAct.php?requact=deleteuser&iduser<?php echo $v->iduser; ?>">
-    <img class="iconimg" src="./img_LMK/anhxoa.png"/>
+
+<!-- <td align="center">
+    <?php
+    //if ($v->gioitinh == 0) {
+    ?>
+        <img class="iconimg" src="./img_LMK/girlicon.png" />
+    <?php
+    //} else {
+    ?>
+        <img class="iconimg" src="./img_LMK/anhboy.png" />
+    <?php
+    //}
+    ?>
+</td> -->
+<!-- ------------------------- -->
+<!-- <td><?php //echo $v->ngaysinh; 
+            ?></td> -->
+
+<!-- <td><?php //echo $v->ngaydangki; 
+            ?></td> -->
+<!-- set lock -->
+<!-- <td align="center">
+    <?php
+    //if ($v->abiliti == 0) {
+    ?>
+        <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php //echo $v->iduser; 
+                                                                        ?>
+        &ability=<?php //echo $v->abiliti; 
+                    ?>">
+            <img class="iconimg" src="./img_LMK/okhoadong.png" />
+        </a>
+    <?php
+    //} else {
+    ?>
+        <a href="./elements_LMK/mUser/userAct.php?reqact=setlock&iduser=<?php //echo $v->iduser; 
+                                                                        ?>
+        &ability=<?php //echo $v->abiliti; 
+                    ?>">
+            <img class="iconimg" src="./img_LMK/okhoamo.png" />
+        </a>
+    <?php
+    //}
+    ?>
+</td> -->
+
+<!-- <td align="center">
+    <?php
+    //if ($v->abiliti == 0) {
+    ?>
+        <a href="./element_vmk/mUser/userAct.php?reqact=setlock&iduser=<?php //echo $v->iduser; 
+                                                                        ?> &ability=<?php //echo $v->abiliti; 
+                                                                                    ?>">
+            <img class="iconimg" src="./img_LMK/okhoadong.png" />
+        </a>
+    <?php
+    //} else {
+    ?>
+        <a href="./element_vmk/mUser/userAct.php?reqact=setlock&iduser=<?php //echo $v->iduser; 
+                                                                        ?> &ability=<?php //echo $v->abiliti; 
+                                                                                    ?>">
+            <img class="iconimg" src="./img_LMK/okhoamo.png" />
+        </a>
+    <?php
+    //}
+
+    ?> -->
+<!-- </td> -->
+<!-- ---------------------------- -->
+
+<!-- updateupdate -->
+<!-- <td>
+    <a href="./elements_LMK/mUser/userAct.php?requact=deleteuser&iduser<?php //echo $v->iduser; 
+                                                                        ?>">
+        <img class="iconimg" src="./img_LMK/anhxoa.png" />
     </a>
-    <a href="./index.php?req=updateuser&iduser=<?php echo $v->iduser;?>">
-    <temps class="btnupdate" value="<?php echo $v->iduser; ?>">
-    <img class="iconimg" src="./img_LMK/khoiphuc.png"/>
+    <a href="./index.php?req=updateuser&iduser=<?php //echo $v->iduser; 
+                                                ?>">
+        <temps class="btnupdate" value="<?php //echo $v->iduser; 
+                                        ?>">
+            <img class="iconimg" src="./img_LMK/khoiphuc.png" />
+        </temps>
+    </a>
+
+</td> -->
+
+<!-- <td>
+    <a href="./elements_LMK/mUser/userAct.php?reqact=deleteuser&iduser=<?php //echo $v->iduser; ?>">
+        <img class="iconimg" src="./img_LMK/anhxoa.png" alt="">
+    </a>
+
+    <temps class="btnupdate" value="<?php //echo $v->iduser; ?>">
+        <img class="iconimg" src="./img_LMK/khoiphuc.png" alt="">
     </temps>
-    </a>
-    
-</td>
+</td> -->
+
+<!-- ------------------------------ -->
